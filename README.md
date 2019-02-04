@@ -4,7 +4,7 @@
 
 1. Describe what happens in the updating phase of the React component lifecycle
 2. Briefly introduce React Refs and their role in the component lifecycle
-3. Practice the using `shouldComponentUpdate` and `componentDidUpdate`.
+3. Practice using `shouldComponentUpdate` and `componentDidUpdate`.
 
 ## Overview
 
@@ -81,9 +81,9 @@ Once the Timer component mounts, it is possible to access the DOM node,
 `this.timer`, we just need to write `this.timer` followed by `current`:
 
 ```js
-console.log(this.timer.current)
+console.log(this.timer.current);
 //outputs <section class="Timer" ... > ... </section>
-console.log(this.timer.current.style.background)
+console.log(this.timer.current.style.background);
 //outputs the background color, something like rgb(62, 132, 219)
 ```
 
@@ -97,7 +97,8 @@ To pass the first test in this lab, write `componentDidUpdate` within Timer. Use
 the provided ref to manipulate the DOM node to visually confirm. One suggestion:
 
 ```js
-this.timer.current.style.color = '#'+Math.floor(Math.random()*16777215).toString(16)
+this.timer.current.style.color =
+  "#" + Math.floor(Math.random() * 16777215).toString(16);
 ```
 
 This will change the font color randomly. `componentDidUpdate` fires every time
@@ -105,7 +106,7 @@ the component updates.
 
 Changing the font color here may make it clearer to observe - each Timer is
 updating based on the interval, but _is also subject_ to updates to the state of
-it's parent component, App.  App's state is connected to the buttons within the
+it's parent component, App. App's state is connected to the buttons within the
 Controls component, so when the `-` and `+` buttons are pressed, it causes App,
 and subsequently, each Timer, to update.
 
@@ -114,7 +115,6 @@ allowing it to update the actual DOM in a very efficient way. Accessing the
 DOM directly comes with some caution as it circumvents React's default behavior.
 For this reason, it is better to handle most style changes using an external CSS
 file or in-line within JSX, if possible.
-
 
 #### `shouldComponentUpdate`
 
@@ -134,20 +134,27 @@ its Timer children to update. We can actually intercept and stop this from
 happening.
 
 `shouldComponentUpdate` takes in two arguments, the _next_ props and state from
-the potential update. We also have access to our current props and state,
-allowing us to write comparison like the following:
+the potential update. That is to say, when a component is _about to_ update, it
+calls `shouldComponentUpdate`, passing in the new props and state. Whatever the
+return value is will determine if the component will continue with the update
+process. Because of this, from within `shouldComponentUpdate`, we have access
+to both the _current_ props and state, accessible with `this.state` and
+`this.props`, and the _next_ props and state, represented below as `nextProps`
+and `nextState`:
 
 ```js
-if (this.state.time === nextState.time) {
-  return false
+shouldComponentUpdate(nextProps, nextState) {
+  if (this.state.time === nextState.time) {
+    return false
+  }
+  return true
 }
-return true
 ```
 
-Write a `shouldComponentUpdate` method in Timer that includes the above code. In
-the case of the Timer component updating, the only time we need to update is
-when `this.state.time` changes. Including this code prevents the unnecessary
-updates being caused by App's state changes.
+Include the above `shouldComponentUpdate` method in Timer. In regards to the
+Timer component updating, the only time we really need to update is when
+`this.state.time` changes. Including this code prevents unnecessary updates
+being caused by App's state changes.
 
 The result is that the DOM changes you've made in `componentDidUpdate` will only
 take effect when a Timer increments.
