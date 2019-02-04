@@ -176,7 +176,7 @@ The only change that registers for our Timer components is the change in
 `this.state.time`. This means that instead of including this:
 
 ```js
-shouldComponentUpdate() {
+shouldComponentUpdate(nextProps, nextState) {
   if (this.state.time === nextState.time) {
     return false
   }
