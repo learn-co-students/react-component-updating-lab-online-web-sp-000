@@ -37,6 +37,7 @@ class App extends Component {
 
   // adds a random number for timer ID
   handleAddTimer = () => {
+    console.log("handletimer", this.prevState)
     this.setState(prevState => ({
       timerIDs: [
         ...prevState.timerIDs,
