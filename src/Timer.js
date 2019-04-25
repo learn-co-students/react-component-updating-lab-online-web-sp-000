@@ -13,8 +13,13 @@ class Timer extends Component {
 
 
 
-  //Your code here
+  componentDidUpdate(){
+    this.timer.current.style.color = `#${Math.floor(Math.random()* 16 ** 6).toString(16)}`
+  }
 
+  shouldComponentUpdate(nextProps, nextState){
+    return this.state.time !== nextState.time 
+  }
 
 
   componentDidMount() {
