@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class Controls extends PureComponent {
+export default class Controls extends PureComponent {
 
   render() {
     return (
@@ -14,8 +14,4 @@ class Controls extends PureComponent {
       </div>
     );
   }
-
-
 }
-
-export default Controls
