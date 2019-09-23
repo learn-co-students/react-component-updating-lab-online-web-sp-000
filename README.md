@@ -106,7 +106,7 @@ the component updates.
 
 Changing the font color here may make it clearer to observe - each Timer is
 updating based on the interval, but _is also subject_ to updates to the state of
-it's parent component, App. App's state is connected to the buttons within the
+its parent component, App. App's state is connected to the buttons within the
 Controls component, so when the `-` and `+` buttons are pressed, it causes App,
 and subsequently, each Timer, to update.
 
