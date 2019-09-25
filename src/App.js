@@ -12,6 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    //adds one additional timer
     this.handleAddTimer()
   }
 
