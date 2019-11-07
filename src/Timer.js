@@ -10,7 +10,25 @@ class Timer extends Component {
     };
   }
 
-  //Your code here
+  // In some cases we may not want the component to rerender due to an update in State.
+  // For that reason, we are implamenting a "shouldComponentUpdate" function.
+  // This will allow us to only rerender the timer if the time in state is different. 
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+  }
+
+  // componentDidUpdate is invoked after every re-render.
+  // It is used for post-processing actions. 
+  
+  componentDidUpdate() {
+    this.timer.current.style.color = '#'+Math.floor(Math.random()*16777215).toString(16)
+  }
+  
+
 
   componentDidMount() {
     this.interval = setInterval(
