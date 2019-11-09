@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <header>
           <h1>MultiTimer</h1>
-          <Controls updateIntervalSetting={this.updateIntervalSetting} updateInterval={this.state.updateInterval} handleAddTimer={this.handleAddTimer}/>
+          <Controls updateIntervalSetting={this.updateIntervalSetting} updateInterval={this.state.updateInterval} handleAddTimer={this.handleAddTimer} />
         </header>
         <div className="TimerGrid">
           {this.renderTimers()}
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   // returns array of components written in JSX, mapped from this.state.timerIDs
-  renderTimers = () => this.state.timerIDs.map(({id, updateInterval}) => <Timer key={id} id={id} removeTimer={this.removeTimer} updateInterval={updateInterval}/>)
+  renderTimers = () => this.state.timerIDs.map(({ id, updateInterval }) => <Timer key={id} id={id} removeTimer={this.removeTimer} updateInterval={updateInterval} />)
 
 
   // adds a random number for timer ID
