@@ -10,7 +10,7 @@ class App extends Component {
     updateInterval: 1,
     timerIDs: []
   }
-
+  //adds initial timer
   componentDidMount() {
     this.handleAddTimer()
   }
