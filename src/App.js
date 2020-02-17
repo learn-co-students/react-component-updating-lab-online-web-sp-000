@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.timerIDs);
+
     return (
       <div className="App">
         <header>
