@@ -14,6 +14,7 @@ class App extends Component {
   componentDidMount() {
     this.handleAddTimer()
   }
+  //Calls a method to add one initial timer
 
   render() {
     console.log(this.state.timerIDs);
