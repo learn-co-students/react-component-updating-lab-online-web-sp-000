@@ -11,6 +11,8 @@ class Timer extends Component {
   }
 
   //Your code here
+  // Student's note: I tried changing Timer to a PureComponent like the README showed in the Bonus section,
+  // but it didn't pass the tests.
 
   componentDidMount() {
     this.interval = setInterval(
@@ -21,6 +23,16 @@ class Timer extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // This is shorter than what's in the README:
+    return (this.state.time === nextState.time ? false : true);
+  }
+
+  componentDidUpdate() {
+    // this.timer.current.style.background = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    this.timer.current.style.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
   }
 
   render() {
