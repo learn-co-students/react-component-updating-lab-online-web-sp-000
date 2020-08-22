@@ -23,7 +23,27 @@ class Timer extends Component {
     clearInterval(this.interval);
   }
 
+  componentDidUpdate() {
+    this.timer.current.style.color = '#'+Math.floor(Math.random()*16777215).toString(16)
+  }
+
+
+  shouldComponentUpdate(nextProps, nextState){
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+
+  }
+    
+     
+    
+    
+  
+
   render() {
+    
+   
     const { time, color, logText } = this.state;
     return (
       <section className="Timer" style={{ background: color }} ref={this.timer}>
@@ -32,6 +52,7 @@ class Timer extends Component {
         <aside className="logText">{logText}</aside>
         <small onClick={this.handleClose}>X</small>
       </section>
+        
     );
   }
 
