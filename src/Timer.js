@@ -12,6 +12,21 @@ class Timer extends Component {
 
   //Your code here
 
+  componentDidUpdate() {
+    this.timer.current.style.color =
+    "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      return false
+    }
+    return true
+  }
+  // Include the above shouldComponentUpdate method in Timer. 
+  // In regards to the Timer component updating, the only time we really need to update is when this.state.time changes. 
+  // Including this code prevents unnecessary updates being caused by App's state changes.
+
+
   componentDidMount() {
     this.interval = setInterval(
       this.clockTick,
