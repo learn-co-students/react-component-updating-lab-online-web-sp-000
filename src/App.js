@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>MultiTimer</h1>
+          <h1>Seconds To Live:</h1>
           <Controls updateIntervalSetting={this.updateIntervalSetting} updateInterval={this.state.updateInterval} handleAddTimer={this.handleAddTimer}/>
         </header>
         <div className="TimerGrid">
