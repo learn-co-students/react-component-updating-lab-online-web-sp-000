@@ -37,7 +37,8 @@ class App extends Component {
 
   // adds a random number for timer ID
   handleAddTimer = () => {
-    this.setState(prevState => ({
+    this.setState(prevState => (
+      {
       timerIDs: [
         ...prevState.timerIDs,
         {
@@ -45,7 +46,8 @@ class App extends Component {
           id: Date.now()
         }
       ]
-    }))
+    }
+    ))
   }
 
   // removeTimer updates state, removing any timer that matches the provided author
