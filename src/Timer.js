@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class Timer extends Component {
+class Timer extends PureComponent {
+  //Pure components do not implement shouldComponentUpdate. Instead, a pure component automatically does a comparison of current and next props and state, and only updates if it registers a change.
+  
   constructor() {
     super();
     this.timer = React.createRef();
