@@ -9,8 +9,16 @@ class Timer extends Component {
       color: "#" + Math.floor(Math.random() * 16777215).toString(16)
     };
   }
-
-  //Your code here
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+    return false 
+    }
+    return true
+  }
+  componentDidUpdate() {
+    this.timer.current.style.width = 240+this.state.time*10/1000+"px"
+    this.timer.current.style.height = 150+this.state.time*10/1000+"px"
+  }
 
   componentDidMount() {
     this.interval = setInterval(
