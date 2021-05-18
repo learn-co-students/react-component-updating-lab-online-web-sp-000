@@ -15,22 +15,6 @@ class App extends Component {
     this.handleAddTimer()
   }
 
-  render() {
-    console.log(this.state.timerIDs);
-    return (
-      <div className="App">
-        <header>
-          <h1>MultiTimer</h1>
-          <Controls updateIntervalSetting={this.updateIntervalSetting} updateInterval={this.state.updateInterval} handleAddTimer={this.handleAddTimer}/>
-        </header>
-        <div className="TimerGrid">
-          {this.renderTimers()}
-        </div>
-
-      </div>
-    );
-  }
-
   // returns array of components written in JSX, mapped from this.state.timerIDs
   renderTimers = () => this.state.timerIDs.map(({id, updateInterval}) => <Timer key={id} id={id} removeTimer={this.removeTimer} updateInterval={updateInterval}/>)
 
@@ -62,6 +46,22 @@ class App extends Component {
         updateInterval: prevState.updateInterval + increment
       }
     })
+  }
+
+  render() {
+    console.log(this.state.timerIDs);
+    return (
+      <div className="App">
+        <header>
+          <h1>MultiTimer</h1>
+          <Controls updateIntervalSetting={this.updateIntervalSetting} updateInterval={this.state.updateInterval} handleAddTimer={this.handleAddTimer}/>
+        </header>
+        <div className="TimerGrid">
+          {this.renderTimers()}
+        </div>
+
+      </div>
+    );
   }
 
 }
