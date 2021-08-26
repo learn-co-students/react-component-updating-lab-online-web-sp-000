@@ -11,8 +11,22 @@ class Timer extends Component {
   }
 
   //Your code here
+  componentDidUpdate() {
+    this.timer.current.style.color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  //changes color randomly
+  //points to this.timer which points to ref
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.time === nextState.time) {
+      //prevents unnesseccary updates
+      return false
+    }
+    return true
+  }
 
   componentDidMount() {
+    //initializes interval
     this.interval = setInterval(
       this.clockTick,
       this.props.updateInterval * 1000
